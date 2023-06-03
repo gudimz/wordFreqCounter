@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 
-void writeToOutputFile(std::string filename, std::vector<std::pair<std::string, size_t>>& sortedFreqDictionary) {
+void writeToOutputFile(const std::string& filename, const std::vector<std::pair<std::string, size_t>>& sortedFreqDictionary) {
     std::ofstream file(filename);
 
     if (!file) {
@@ -11,14 +11,14 @@ void writeToOutputFile(std::string filename, std::vector<std::pair<std::string, 
         exit(EXIT_FAILURE);
     }
 
-    for (auto pair : sortedFreqDictionary) {
+    for (const auto& pair : sortedFreqDictionary) {
         file << pair.second << " " << pair.first << std::endl;
     }
 
     file.close();
 }
 
-std::unordered_map<std::string, size_t> countWordFrequency(std::string filename) {
+std::unordered_map<std::string, size_t> countWordFrequency(const std::string& filename) {
     std::ifstream file(filename);
 
     if (!file) {
