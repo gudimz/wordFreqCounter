@@ -40,8 +40,7 @@ std::unordered_map<std::string, size_t> countWordFrequency(const std::string& fi
                             return std::tolower(c);
                         });
 
-        std::stringstream ss;
-        ss << line;
+        std::stringstream ss(line);
 
         while (ss >> word) {
             if (!freqDictionary.count(word)) {
@@ -64,10 +63,10 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    std::string inpuFilename = argv[1];
+    std::string inputFilename = argv[1];
     std::string outputFilename = argv[2];
 
-    std::unordered_map<std::string, size_t> freqDictionary = countWordFrequency(inpuFilename);
+    std::unordered_map<std::string, size_t> freqDictionary = countWordFrequency(inputFilename);
 
     std::vector<std::pair<std::string, size_t>> sortedFreqDictionary(freqDictionary.begin(), freqDictionary.end());
     std::sort(sortedFreqDictionary.begin(), sortedFreqDictionary.end(),
